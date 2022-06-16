@@ -1,0 +1,75 @@
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid gray;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: darkgray;
+  color: white;
+  padding: 10px 20px;
+  width: 80%;
+}
+
+article {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid lightgray;
+  // border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: aliceblue;
+  margin: 0px;
+  width: 80%;
+}
+
+.channel-name {
+  display: flex;
+  font-weight: bold;
+  align-self: center;
+  padding-left: 30px;
+}
+
+a {
+  cursor: pointer;
+  margin: 5px;
+}
+
+a:hover {
+  font-size: large;
+}
+
+img,
+fa-icon {
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+  
+}
+
+fa-icon {
+  cursor: pointer;
+}
+
+button {
+  align-self: center;
+}
+
+button:hover {
+  background-color: #024e88;
+}
+
+.delete {
+  color: #0079d3;
+  // justify-content: flex-end;
+  align-self: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}

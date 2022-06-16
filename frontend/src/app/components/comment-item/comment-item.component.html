@@ -1,0 +1,53 @@
+<div class="comment">
+  <header>
+    <p>{{ creationDate }}{{ creationTime }}</p>
+    <div>
+      <fa-icon
+        *ngIf="isAdmin"
+        [icon]="faPencil"
+        (click)="isOpen = !isOpen"
+      ></fa-icon>
+      <fa-icon
+        *ngIf="isAdmin"
+        [icon]="faTrash"
+        class="close"
+        [swal]="{
+          title: 'Are you sure?',
+          showDenyButton: true,
+          denyButtonText: 'Don\'t delete'
+        }"
+        (confirm)="onDelete(comment)"
+      ></fa-icon>
+      <form
+        *ngIf="isOpen"
+        [formGroup]="commentForm"
+        #formDirective="ngForm"
+        (ngSubmit)="onUpdate(commentForm.value)"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="content">New content</label>
+          <input
+            type="text"
+            class="form-control"
+            id="content"
+            placeholder="new content..."
+            formControlName="content"
+          />
+          <span
+            class="help-block"
+            *ngIf="
+              commentForm.get('content')?.invalid &&
+              commentForm.get('content')?.touched
+            "
+          >
+            Please enter content.
+          </span>
+          <br />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </header>
+  <p>{{ comment.content }}</p>
+</div>

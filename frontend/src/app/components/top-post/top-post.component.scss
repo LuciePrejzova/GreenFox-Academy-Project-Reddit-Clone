@@ -1,0 +1,29 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+    border: 1px solid #0079d3;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: aliceblue;
+}
+
+header{
+    // background-color: #0079d3;
+    background-image: url("../../../assets/images/reddit-background.jpg");
+    margin: 0;
+    border-radius: 8px 8px 0px 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+article{
+    padding:20px;
+}

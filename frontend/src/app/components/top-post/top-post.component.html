@@ -1,0 +1,17 @@
+<div class="post">
+  <header>
+    <h1>Post of the day</h1>
+  </header>
+  <article>
+    <h2>{{ bestPost.title }}</h2>
+    <p *ngIf="bestPost.type === 'text'">{{ bestPost.content }}</p>
+    <img
+      [src]="bestPost.content"
+      style="width: 45%"
+      *ngIf="bestPost.type === 'image'"
+    />
+    <a [href]="contentPath" *ngIf="bestPost.type === 'link'" target="_blank">{{
+      bestPost.content
+    }}</a>
+  </article>
+</div>

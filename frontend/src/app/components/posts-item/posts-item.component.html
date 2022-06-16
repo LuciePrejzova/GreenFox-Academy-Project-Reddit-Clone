@@ -1,0 +1,83 @@
+<div class="posts">
+
+  <div class="vote d-flex flex-column justify-content-space-between align-items-center left-side-rounded">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+    <fa-icon
+      class="mb-2 p-2"
+      [icon]="faCircleUp"
+      (click)="vote(post, 'upvote')"
+      [styles]="{'color': (voteType === 'upvote') ? '#f16565' : 'black'}"
+      ></fa-icon>
+    <p class="badge rounded-pill bg-secondary">{{votes}}</p>
+    <fa-icon
+      [icon]="faCircleDown"
+      (click)="vote(post, 'downvote')"
+      [styles]="{'color': (voteType === 'downvote') ? 'blue' : 'black'}"
+    ></fa-icon>
+  </div>
+    <p>Votes: {{ totalVotes }}</p>
+  </div>
+
+  <div class="post">
+    <header *ngIf="isAdmin">
+      <fa-icon
+        [icon]="faTrash"
+        class="close"
+        [swal]="{
+          title: 'Are you sure?',
+          showDenyButton: true,
+          denyButtonText: 'Don\'t delete'
+        }"
+        (confirm)="deletePost(post)"
+      ></fa-icon>
+    </header>
+    <article>
+      <h5>{{ post.title }}</h5>
+      <p *ngIf="post.type === 'text'">{{ post.content }}</p>
+      <img
+        [src]="contentPath"
+        style="width: 50%"
+        *ngIf="post.type === 'image'"
+      />
+      <a [href]="contentPath" *ngIf="post.type === 'link'" target="_blank">{{
+        post.content
+      }}</a>
+    </article>
+    <footer class="d-flex justify-content-between align-items-baseline mt-5">
+      <!-- comments icon + comments count -->
+      <div class="d-flex p-2">
+        <p class="position-relative">
+          <fa-icon
+            class="fa-xl"
+            [icon]="faComments"
+            (click)="toggleComments(post)"
+          ></fa-icon>
+
+          <span
+            class="position-absolute bottom-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            {{ comments.length }}
+          </span>
+        </p>
+      </div>
+      <p *ngIf="!showAuthor">
+        created at {{ creationDate }} {{ creationTime }}
+      </p>
+
+      <p *ngIf="showAuthor">
+        created at {{ creationDate }} {{ creationTime }} by {{ author!.name }}
+      </p>
+    </footer>
+  </div>
+</div>
+
+<div class="comments-container" *ngIf="showComments === true">
+  <fa-icon [icon]="faX" class="close" (click)="toggleCommentsOff()"></fa-icon>
+  <app-comment-item
+    *ngFor="let comment of comments"
+    [comment]="comment"
+    [isAdmin]="isAdmin"
+    (delete)="deleteComment($event)"
+    (update)="updateComment($event)"
+  ></app-comment-item>
+</div>

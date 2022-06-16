@@ -1,0 +1,25 @@
+<article>
+    <h3>Admin:</h3>
+    <h4>Create new user</h4>
+    <button (click)="isOpen = !isOpen" type="button">New user</button>
+    <!-- <form *ngIf="isOpen" [formGroup]="userForm" (ngSubmit)="newUser()" novalidate>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Username</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter username" formControlName="username">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Email</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter email" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput3">Password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="Password" formControlName="password">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput4">Confirm password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput4" placeholder="Confirm password" formControlName="password_repeat">
+        </div>
+        <button type="submit" [disabled]="!userForm.valid" class="btn btn-info">Create</button>
+      </form> -->
+      <app-registration *ngIf="isOpen"></app-registration>
+</article>

@@ -1,0 +1,35 @@
+.comment{
+  background-color: aliceblue;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  margin: 0px;
+  // background-color: pink;
+  
+  p{
+    font-size: 8px;
+    color:gray;
+    // background-color: aqua;
+    
+  }
+  fa-icon{
+    color: #0079d3;
+    padding: 5px;
+    padding-bottom: 0px;
+    // background-color: green;
+  }
+}
+
+p {
+  padding-top: 10px;
+}
+
+fa-icon:hover{
+  cursor: pointer;
+}

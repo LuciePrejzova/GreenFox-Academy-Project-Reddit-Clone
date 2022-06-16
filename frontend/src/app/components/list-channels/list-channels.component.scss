@@ -1,0 +1,25 @@
+.channels {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    border-radius: 8px;
+    border: 1px solid gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px 10px 10px 0px;
+    padding: 0px;
+    width: 50vh;
+}
+
+h4 {
+    text-align: center;
+    color: white;
+}
+
+header {
+    // background-color: #ff4500;
+    background-image: url(../../../assets/images/reddit-background-orange.jpg);
+    margin: 0;
+    border-radius: 8px 8px 0px 0px;
+    padding-top: 25px;
+    padding-bottom: 15px;
+}

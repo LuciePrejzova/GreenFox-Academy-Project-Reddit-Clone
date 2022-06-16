@@ -1,0 +1,30 @@
+<main class="channel-info border border-dark rounded px-4 py-2 shadow">
+  <header>
+    <h3><a href="#">{{channel.channelName}}</a>/{{ channel.name }}</h3>
+    <h5>{{ channel.description }}</h5>
+
+    <!-- if picture is provided -->
+    <img *ngIf="image" [src]="image" class="img-thumbnail mb-2">
+  </header>
+
+  <main>
+    <!-- if no picture provided -->
+    <fa-icon *ngIf="!image" [icon]="faIcon" class="fa-10x"></fa-icon>
+  </main>
+
+  <footer class="pt-3">
+    <div class="creation-info">
+      <div>
+        <p>created at:</p>
+        <p>{{ creationDate }}</p>
+        <p>{{ creationTime }}</p>
+      </div>
+
+      <div class="text-right">
+        <p>created by:</p>
+        <p>{{ channel.creatorName }}</p>
+      </div>
+
+    </div>
+  </footer>
+</main>

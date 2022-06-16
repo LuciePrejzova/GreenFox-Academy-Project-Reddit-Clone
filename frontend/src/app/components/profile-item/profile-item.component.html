@@ -1,0 +1,102 @@
+<div class="profile-item">
+  
+  <fa-icon
+    (click)="isToggled = !isToggled"
+    [icon]="faCamera"
+    class="fa-2xl"
+  ></fa-icon>
+  <fa-icon *ngIf="user.profilePicture == ''" [icon]="faUser" class="fa-10x"></fa-icon>
+  <img [src]="user.profilePicture" class="profile-picture" />
+  <form
+    *ngIf="isToggled"
+    [formGroup]="pictureForm"
+    #formDirective="ngForm"
+    (ngSubmit)="onSubmit(pictureForm.value)"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="image">Choose you image</label>
+      <input
+        type="file"
+        class="form-control"
+        id="image"
+        placeholder="Upload new profile picture"
+        formControlName="profilePicture"
+        (change)="onChange($event)"
+      />
+    </div>
+    <button type="submit" [disabled]="!pictureForm.valid" class="btn btn-info">
+      Upload
+    </button>
+  </form>
+  <h3>{{ user.name }}'s profile</h3>
+  <p>E-mail: {{ user.email }}</p>
+  <button (click)="isOpen = !isOpen" type="button" class="btn btn">
+    Edit e-mail
+  </button>
+  <div>
+    <form
+      *ngIf="isOpen"
+      [formGroup]="emailForm"
+      #formDirective="ngForm"
+      (ngSubmit)="onSubmit(emailForm.value)"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="formGroupExampleInput">New e-mail</label>
+        <input
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder="Enter new e-mail address"
+          formControlName="email"
+        />
+      </div>
+      <button type="submit" [disabled]="!emailForm.valid" class="btn btn">
+        Confirm
+      </button>
+    </form>
+  </div>
+
+  <button (click)="isOpenPswd = !isOpenPswd" type="button" class="btn btn">
+    New password
+  </button>
+  <div>
+    <form
+      *ngIf="isOpenPswd"
+      [formGroup]="passwordForm"
+      #formDirective="ngForm"
+      (ngSubmit)="onSubmit(passwordForm.value)"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="formGroupExampleInput">New password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder="Enter new password"
+          formControlName="password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Repeat password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder="Repeat password"
+          formControlName="password_repeat"
+        />
+      </div>
+      <button
+        type="submit"
+        [disabled]="!passwordForm.valid"
+        class="btn btn-info"
+        [swal]="['Great!', 'Your password was changed.', 'success']"
+      >
+        Confirm
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.flex-container {
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    background-color: #DAE0E6;
+}
+
+.sidebar{
+    display:flex;
+    flex-direction: column;
+}
+header{
+    // background-color: #0079d3;
+    background-image: url("../../../assets/images/reddit-background.jpg");
+    margin: 0;
+    border-radius: 8px 8px 0px 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}

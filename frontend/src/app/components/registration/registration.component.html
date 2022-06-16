@@ -1,0 +1,98 @@
+<article>
+  <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
+    <div class="form-group">
+      <label for="name">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+        placeholder="Enter username"
+      />
+      <span
+        class="help-block"
+        *ngIf="
+          signupForm.get('name')?.invalid && signupForm.get('name')?.touched
+        "
+      >
+        Please enter a valid username.
+      </span>
+      <br />
+      <span
+        class="help-block"
+        *ngIf="signupForm.get('name')?.errors?.['userExists']"
+      >
+        Username already in use, please pick another one.
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+        formControlName="email"
+      />
+      <span
+        class="help-block"
+        *ngIf="
+          signupForm.get('email')?.invalid && signupForm.get('email')?.touched
+        "
+      >
+        Please enter a valid email.
+      </span>
+      <br />
+      <span
+        class="help-block"
+        *ngIf="signupForm.get('email')?.errors?.['userExists']"
+      >
+        Email already in use, please pick another one.
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <span
+        class="help-block"
+        *ngIf="
+          signupForm.get('password')?.invalid &&
+          signupForm.get('password')?.touched
+        "
+      >
+        Please enter a valid password (8 characters min, 1 uppercase min, 1
+        number min).
+      </span>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="password_repeat">Confirm password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password_repeat"
+        placeholder="Confirm password"
+        formControlName="password_repeat"
+      />
+      <span
+        class="help-block"
+        *ngIf="
+          signupForm.get('password_repeat')?.value !==
+          signupForm.get('password')?.value
+        "
+      >
+        Passwords don't match.
+      </span>
+    </div>
+    <br />
+    <button type="submit" [disabled]="!signupForm.valid">
+      Register
+    </button>
+  </form>
+</article>

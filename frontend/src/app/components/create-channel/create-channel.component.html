@@ -1,0 +1,105 @@
+<button *ngIf="isAuthenticated" (click)="isOpen = !isOpen">
+  <fa-icon [icon]="plusIcon"></fa-icon> Add new channel
+</button>
+
+<form
+  *ngIf="isOpen"
+  [formGroup]="channelForm"
+  #formDirective="ngForm"
+  (ngSubmit)="onSubmit(channelForm.value)"
+  novalidate
+>
+  <div class="form-group">
+    <label for="title">Channel title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="Channel title"
+      formControlName="name"
+    />
+    <span
+      class="help-block"
+      *ngIf="
+        channelForm.get('name')?.invalid && channelForm.get('name')?.touched
+      "
+    >
+      Please enter a valid channel title.
+    </span>
+    <br />
+    <span
+      class="help-block"
+      *ngIf="channelForm.get('name')?.errors?.['channelExists']"
+    >
+      Channel title already in use, please pick another one.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="slug">Channel name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="slug"
+      placeholder="Channel name"
+      formControlName="channelName"
+    />
+    <span
+      class="help-block"
+      *ngIf="
+        channelForm.get('channelName')?.invalid &&
+        channelForm.get('channelName')?.touched
+      "
+    >
+      Please enter a valid channel name (only alphanumeric, no blank space
+      allowed).
+    </span>
+    <br />
+    <span
+      class="help-block"
+      *ngIf="channelForm.get('channelName')?.errors?.['channelExists']"
+    >
+      Channel name already in use, please pick another one.
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input
+      type="file"
+      class="form-control"
+      id="image"
+      placeholder="Upload channel image"
+      formControlName="backgroundImage"
+      (change)="onChange($event)"
+    />
+  </div>
+  <span
+    class="help-block"
+    *ngIf="
+      channelForm.get('backgroundImage')?.invalid &&
+      channelForm.get('backgroundImage')?.touched
+    "
+  >
+    Please upload image for the channel.
+  </span>
+  <br />
+  <div class="form-group">
+    <label for="formGroupExampleInput4">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput4"
+      placeholder="Description"
+      formControlName="description"
+    />
+  </div>
+  <span
+    class="help-block"
+    *ngIf="
+      channelForm.get('description')?.invalid &&
+      channelForm.get('description')?.touched
+    "
+  >
+    Please provide the channel description.
+  </span>
+  <button type="submit" [disabled]="!channelForm.valid">Create channel</button>
+</form>

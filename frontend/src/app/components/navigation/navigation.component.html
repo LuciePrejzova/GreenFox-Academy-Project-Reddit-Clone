@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-between" >
+    <a class="navbar-brand" routerLink="/"><img src="../../../assets/images/reddit-logo.png" alt=""></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="d-flex">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-circle btn btn-small" type="submit"><fa-icon [icon]="faMagnifyingGlassIcon"></fa-icon></button>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end" style="width: 100%;">
+        <li class="nav-item">
+          <a
+            *ngIf="isAuthenticated"
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/channels"
+          >
+            Channels
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            *ngIf="!isAuthenticated"
+            routerLinkActive="active-link"
+            routerLink="/login"
+            class="nav-link"
+          >
+            Login
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            *ngIf="isAuthenticated"
+            (click)="logout()"
+            routerLinkActive="active-link"
+            routerLink="/login"
+            class="nav-link"
+          >
+            Logout
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            *ngIf="!isAuthenticated"
+            routerLinkActive="active-link"
+            routerLink="/registration"
+            class="nav-link"
+          >
+            Register
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+          *ngIf="isAuthenticated"
+          class="nav-link"
+          routerLinkActive="active-link"
+          routerLink="/profile">
+              Profile
+            </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,10 @@
+<header>
+  <h1>Look at your posts</h1>
+</header>
+<div class="flex-container">
+  <app-list-user-posts></app-list-user-posts>
+  <div class="sidebar">
+    <app-profile-item [user]="user"></app-profile-item>
+    <!-- <app-admin *ngIf="user.isAdmin" [user]="user"></app-admin> -->
+  </div>
+</div>

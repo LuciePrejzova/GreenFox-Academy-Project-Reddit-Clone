@@ -1,0 +1,30 @@
+.channel-item {
+  padding: 5px;
+  border-bottom: 1px solid lightgray;
+}
+
+.join-button {
+  background-color: #0079d3;
+  border-radius: 20px;
+  padding: 1px 20px;
+  border: none;
+  color: white;
+  font-size: 10px;
+}
+.join-button:hover {
+  background-color: #024e88;
+}
+
+a {
+  cursor: pointer;
+  margin: 1rem;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+li{
+  display: flex;
+  justify-content: space-between;
+}

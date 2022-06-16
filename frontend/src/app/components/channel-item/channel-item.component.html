@@ -1,0 +1,8 @@
+<div class="channel-item">
+  <li>
+    <a (click)="openChannel(channel)">{{ channel.name }}</a>
+    <button class="join-button" (click)="joinChannel(channel)">Join</button>
+    <p *ngIf="message">{{message}}</p>
+  </li>
+</div>
+

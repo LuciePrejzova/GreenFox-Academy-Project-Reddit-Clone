@@ -1,0 +1,21 @@
+input.ng-invalid.ng-touched {
+  border: solid 2px red;
+}
+
+span {
+  color: red;
+}
+
+button {
+  background-color: #0079d3;
+  border-radius: 20px;
+  padding: 2px 30px;
+  margin: 10px 0;
+  border: none;
+  color: white;
+}
+
+button:hover {
+  background-color: #024e88;
+}
+

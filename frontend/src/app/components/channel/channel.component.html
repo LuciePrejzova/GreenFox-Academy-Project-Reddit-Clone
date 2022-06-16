@@ -1,0 +1,35 @@
+<div class="flex-container">
+  <header>
+    <h1>Explore all comunities</h1>
+    <app-create-channel (create)="createChannel()"></app-create-channel>
+  </header>
+  <article *ngFor="let channel of channel$ | async">
+    <div class="channel-image">
+      <img *ngIf="channel.backgroundImage" [src]="channel.backgroundImage" />
+      <fa-icon
+        *ngIf="channel.backgroundImage === null"
+        [icon]="faImage"
+        class="fa-4x"
+      ></fa-icon>
+    </div>
+    <div class="channel-name">
+      <a (click)="openChannel(channel)">{{ channel.name }}</a>
+    </div>
+    
+    <div class="buttons">
+    <button type="submit" (click)="joinChannel(channel)">Join</button>
+    <!-- Delete channel available only if user is Admin or owner of the channel. -->
+    <div *ngIf="channel.author_id === userId || isAdmin" class="delete">
+      <fa-icon
+        [icon]="faTrash"
+        [swal]="{
+          title: 'Are you sure?',
+          showDenyButton: true,
+          denyButtonText: 'Don\'t delete'
+        }"
+        (confirm)="delete(channel.channelName)"
+      ></fa-icon>
+    </div>
+  </div>
+  </article>
+</div>

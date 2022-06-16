@@ -1,0 +1,14 @@
+<div class="channels">
+  <header>
+    <h4>Channels</h4>
+  </header>
+  <ul>
+    <div class="channel">
+      <app-channel-item
+        *ngFor="let channel of channels"
+        [channel]="channel"
+      ></app-channel-item>
+    </div>
+  </ul>
+  <button routerLink="/channels">See all</button>
+</div>

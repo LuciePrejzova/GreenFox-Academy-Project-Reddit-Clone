@@ -1,0 +1,35 @@
+<div
+  [ngClass]="{
+    'd-flex flex-row justify-content-between': channel != undefined
+  }"
+>
+  <app-top-post *ngIf="!channel"></app-top-post>
+  <header *ngIf="!channel" class="d-flex align-items-baseline">
+    <h4>Order by:</h4>
+    <button type="submit" (click)="orderBy('asc')">Newest first</button>
+    <button type="submit" (click)="orderBy('desc')">Oldest first</button>
+    <button type="submit" (click)="orderBy('vote')">Most votes</button>
+  </header>
+  <div class="flex-grow-1">
+    <!-- new post -->
+    <app-new-post [channelId]="channel.id" *ngIf="channel" (onAddPost)="addPost($event)"></app-new-post>
+
+    <!-- posts -->
+    <app-posts-item
+      *ngFor="let post of pageSlice"
+      [post]="post"
+      [isAdmin]="isAdmin"
+      (delete)="deletePost($event)"
+    ></app-posts-item>
+  </div>
+  <mat-paginator [length]="posts.length"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10]"
+              aria-label="Select page"
+              (page)="onPageChange($event)"
+              *ngIf="posts.length > 5">
+</mat-paginator>
+  <div>
+    <app-channel-info [channel]="channel" *ngIf="channel"></app-channel-info>
+  </div>
+</div>

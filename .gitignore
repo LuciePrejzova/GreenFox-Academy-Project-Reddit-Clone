@@ -1,0 +1,8 @@
+node_modules
+
+# all starting with dot
+.*
+
+# all starting with dot except those file:
+!.gitignore
+!.sample.env

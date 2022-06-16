@@ -1,0 +1,24 @@
+form {
+  margin: 100px 25%;
+}
+
+input.ng-invalid.ng-touched {
+  border: solid 2px red;
+}
+
+span {
+  color: red;
+}
+
+button {
+  background-color: #0079d3;
+  border-radius: 20px;
+  padding: 2px 30px;
+  border: none;
+  color: white;
+}
+
+a {
+  padding: 5px 0;
+}
+

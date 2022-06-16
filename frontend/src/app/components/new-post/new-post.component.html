@@ -1,0 +1,70 @@
+<div class="container border border-primary rounded mx-8 w-75 bg-light shadow">
+  <button *ngIf="isAuthenticated" (click)="isOpen = !isOpen" class="btn btn-info">
+    {{ !isOpen ? "New post" : "hide"  }}
+  </button>
+
+  <form *ngIf="isOpen" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="form-control">
+      <input
+        class="border border-light w-100"
+        type="text"
+        for="title"
+        name="title"
+        placeholder="title"
+        [(ngModel)]="title"
+        ngModel required
+        #input="ngModel"
+        >
+    </div>
+    <span *ngIf="input.invalid && input.touched" class="help-block">Please enter a title</span>
+
+    <!-- buttons -->
+    <div class="form-group">
+      <button (click)="displayFormFor('text')">post</button>
+      <button (click)="displayFormFor('image')">image</button>
+      <button (click)="displayFormFor('link')">link</button>
+    </div>
+
+    <div *ngIf="type === 'text'" class="h-100">
+      <textarea
+        class="form-control w-100 mb-3"
+        rows="3"
+        placeholder="write your post..."
+        id="post"
+        name="post"
+        [(ngModel)]="content"
+        ngModel required
+        #postContent="ngModel"
+      ></textarea>
+      <span *ngIf="postContent.invalid && postContent.touched" class="help-block">Please provide a post</span>
+    </div>
+
+    <div *ngIf="type === 'image'" class="h-100">
+      <input
+      type="file"
+      class="form-control w-100 mb-3"
+      id="image"
+      name="image"
+      ngModel required
+      (change)="onChange($event)"
+    />
+    </div>
+
+    <div *ngIf="type === 'link'" class="h-100">
+      <textarea
+        class="form-control w-100 mb-3"
+        rows="3"
+        placeholder="provide a link..."
+        id="link"
+        name="link"
+        [(ngModel)]="content"
+        ngModel required
+        #linkContent="ngModel"
+      ></textarea>
+      <span *ngIf="linkContent.invalid && linkContent.touched" class="help-block">Please provide a link</span>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">submit</button>
+  </form>
+
+</div>
